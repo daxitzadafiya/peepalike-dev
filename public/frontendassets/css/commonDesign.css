@@ -1,0 +1,594 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    box-sizing: border-box;
+    font-family: 'arial';
+    background: #F5F5F5;
+    color: #666;
+}
+
+.wrapper{
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.wrapper_overlay {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+.wrapper_overlay div {
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.219);
+    position: fixed;
+}
+
+/*header start*/
+
+.header{
+    background-image: url("../images/bg_home1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 83rem;
+}
+
+/*header slider start*/
+
+.header_slider{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.carousel-item img{
+    height: 83rem;
+}
+
+/*header slider end*/
+
+
+/*header navigation bar start*/
+
+.header_navigation_bar{
+    padding: 0rem 0;
+}
+
+.header_main_content{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.fixed {
+    position: fixed;
+    top:0; left:0;
+    width: 100%; 
+    background-color: #fff;
+    box-shadow: 0 0 .5rem black;
+    z-index: 200;
+    transition: .5s ease-in-out;
+}
+
+.fixed div div div img{
+    width: 14rem;
+    height: 6rem;
+    padding: 1rem 2rem;
+}
+
+.fixed div div nav ul li a{
+    color: #333;
+    padding: 1.5rem 2rem;
+}
+
+.fixed div .login ul li{
+    margin: 1.5rem 0;
+}
+
+.fixed div .login ul li button a{
+    color: #fff;
+}
+
+.fixed div .login ul .menu_bar_icon i{
+    color: #333;
+}
+
+.fixed div .login ul .menu_bar_close_icon i{
+    color: #333;
+}
+
+.fixed div .login ul li a{
+    color: #333;
+    padding: .7rem 1rem;
+}
+
+.fixed div .login ul li a:hover{
+    color: #3ec7f3;
+}
+
+.fixed div .login ul li button a:hover{
+    border: .01rem solid #3ec7f3;
+}
+
+.fixed div div nav.header_navigation_menu {
+    margin: .7rem 0;
+}
+
+.fixed div div .login {
+    margin-top: .7rem;
+}
+
+.fixed div div ul li .navigation_sub_menu{
+    display: none;
+    z-index: 0;
+    transform: translateY(0);
+}
+
+.fixed div div ul li:hover .navigation_sub_menu{
+    display: block;
+}
+
+/*header site logo start*/
+
+.site_logo img {
+    height: 8rem;
+    width: 20rem;
+}
+
+/*header site logo end*/
+
+/*header navigation menu start*/
+
+nav.header_navigation_menu {
+    margin: 1rem 0;
+}
+
+.header_navigation_menu ul{
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+
+.header_navigation_menu ul li{
+    list-style: none;
+    float: left;
+    position: relative;
+}
+
+.header_navigation_menu ul li a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    padding: 2rem 2rem;
+    display: block;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.header_navigation_menu ul li a:hover{
+    color: #3ec7f3;
+}
+
+.header_navigation_menu ul li:hover .navigation_sub_menu{
+    z-index: 1;
+    transform: translateY(0rem);
+}
+
+.header_navigation_menu ul li a i{
+    margin-left: .5rem;
+}
+
+/*header navigation sub menu start*/
+.navigation_sub_menu{
+    background: #F5F5F5;
+    padding: 1.5rem 0;
+    width: 15rem;
+    position: absolute;
+    z-index: -10;
+    transform: translateY(10rem);
+    transition: .3s ease-in-out;
+}
+
+.navigation_sub_menu ul{
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+.navigation_sub_menu ul li{
+    float: none;
+    border-bottom: .01rem solid rgba(24, 9, 9, 0.28);
+    position: relative;
+}
+
+.navigation_sub_menu ul li:last-child{
+    border-bottom: none;
+}
+
+.navigation_sub_menu ul li a{
+    color: #333 !important;
+}
+
+.navigation_sub_menu ul li a:hover{
+    color: #3ec7f3 !important;
+}
+
+.navigation_sub_menu ul li a i{
+    float: right;
+}
+
+.navigation_sub_sub_menu{
+    background: #F5F5F5;
+    padding: 1.5rem 0;
+    width: 15rem;
+    position: absolute;
+    display: none;
+    margin-left: 100%;
+    margin-top: -5rem;
+}
+
+.navigation_sub_menu ul li:hover .navigation_sub_sub_menu{
+    display: block;
+}
+/*header navigation sub menu end*/
+
+/*header navigation menu end*/
+
+/*login start*/
+.padding_left_none{
+    padding-left: 0;
+}
+
+.login {
+    margin-top: 1rem;
+}
+
+.login ul{
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.login ul li{
+    list-style: none;
+    float: left;
+    margin: 2rem 0;
+    padding-right: 1rem;
+    color: #F5F5F5;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.login ul li a{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 2rem 1rem;
+    text-decoration: none;
+    transition: .5s ease-in-out;
+}
+
+.login ul li a:hover{
+    text-decoration: none;
+    color: #3ec7f3;
+}
+
+.login ul li button{
+    border: none;
+    background: none;
+    outline: none;
+    border-radius: .3rem;
+    margin-top: -.5rem;
+}
+
+.login ul li button a{
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #fff;
+    background: #3ec7f3;
+    padding: .7rem 1.5rem;
+    display: block;
+    border-radius: .3rem;
+    transition: .3s ease-in-out;
+    border: .01rem solid transparent;
+}
+
+.login ul li button a:hover{
+    background: #fff;
+}
+
+.login ul li button a i{
+    margin-right: .7rem;
+}
+
+.menu_bar_icon{
+    padding: .3rem .5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.menu_bar_icon i{
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.menu_bar_close_icon{
+    padding: .3rem .5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.menu_bamenu_bar_close_iconr_icon i{
+    font-size: 1.6rem;
+    color: #fff;
+}
+/*login end*/
+
+/*header navigation bar end*/
+
+/*header heading text search form start*/
+
+.header_heading_text_form{
+    margin-top: 15rem;
+}
+
+.header_heading_text{
+    display: flex;
+    justify-content: center;
+}
+
+.header_heading_text div h4{
+    font-size: 7rem;
+    color: #F6F6F6;
+    text-transform: capitalize;
+    font-weight: bolder;
+    text-shadow: 0 0 .3rem #333;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+.header_heading_text div p{
+    font-size: 2rem;
+    color: #F6F6F6;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header_heading_search_form{
+    margin-top: 6rem;
+}
+
+.entar_name_div{
+    width: 34%;
+    display: flex;
+}
+
+.entar_catag_div{
+    width: 25%;
+    border-right: .02rem solid rgba(204,204,204,.28);
+    border-left: .02rem solid rgba(204,204,204,.28);
+    display: flex;
+}
+
+.entar_place_div{
+    width: 21%;
+    display: flex;
+}
+
+.search_btn_div{
+    width: 20%;
+    display: flex;
+}
+
+
+.header_heading_search_form_content form{
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .3rem;
+    overflow: hidden;
+}
+
+::placeholder {
+    color: #333;
+    opacity: 1;
+}
+
+.header_heading_search_form_content form input{
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    color: #333;
+    font-size: 1.4rem;
+    padding: 2rem;
+    padding-left: 1rem;
+    width: 80.6%;
+    background: none;
+}
+
+.header_heading_search_form_content form label{
+    width: 4%;
+    font-size: 1.8rem;
+    padding: 1.5rem 2rem;
+    color: #3ec7f3;
+    margin-bottom: 0;
+}
+
+.header_heading_search_form_content form button{
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    padding: 2rem;
+    background: #3ec7f3;
+    width: 100%;
+    color: #fff;
+}
+
+/*text crasol start*/
+.text_crasol{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+}
+
+.text_crasol_content{
+    width: 25rem;
+    background: #D9DCE0;
+    padding: 1rem 2rem;
+    border-radius: .4rem;
+}
+
+.carousel-item h4{
+    color: #333;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.carousel-item h4 i{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #3ec7f3;
+    margin-right: 3rem;
+}
+/*text crasol end*/
+/*header heading text search form end*/
+
+/*header end*/
+
+/*footer start*/
+
+.footer{
+    padding: 7rem 0;
+    padding-bottom: 0;
+    background: #343353;
+}
+
+.footer_logo img{
+    width: 17rem;
+    height: 6rem;
+    margin: 1rem 0;
+}
+
+.footer_logo_text p{
+    font-size: 1.6rem;
+    color: #C7CACC;
+}
+
+.footer_logo_div ul{
+    margin: 0;
+    padding: 0;
+}
+
+.footer_logo_div ul li{
+    list-style: none;
+    margin: 1rem;
+    display: inline-block;
+}
+
+.footer_logo_div ul li a{
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #C7CACC;
+}
+
+.footer_link h4{
+    font-size: 2.3rem;
+    color: #fff;
+    font-weight: bolder;
+    text-transform: capitalize;
+}
+
+.footer_link ul{
+    margin: 0;
+    padding: 0;
+}
+
+.footer_link ul li{
+    list-style: none;
+    border-bottom: .01rem solid rgba(204, 204, 204, 0.171);
+}
+
+.footer_link ul li:last-child{
+    border-bottom: none;
+}
+
+.footer_link ul li a{
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #C7CACC;
+    padding: 1.6rem 0;
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.footer_link ul li a i{
+    margin-right: 1rem;
+}
+
+.footer_link ul li a:hover{
+    color: #fff;
+}
+
+.footer_bottom{
+    background: #22213F;
+    padding: 5rem 0;
+    margin-top: 2rem;
+}
+
+.footer_copyrigth_text p{
+    font-size: 1.6rem;
+    color: #C7CACC;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+
+.footer_bottom_menu ul{
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.footer_bottom_menu ul li{
+    list-style: none;
+    display: inline-block;
+    font-size: 1.4rem;
+    color: #888;
+}
+
+.footer_bottom_menu ul li a{
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #C7CACC;
+    margin: 0 1rem;
+}
+
+/*footer end*/
+
+
+

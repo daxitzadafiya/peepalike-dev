@@ -1,0 +1,223 @@
+/*_*screen size 1920x1080 start*_*/
+@media screen and (max-width: 1920px) {
+    
+}
+/*_*screen size 1920x1080 end*_*/
+
+/*_*screen size 1536x864 start*_*/
+@media screen and (max-width: 1536px) {
+    
+}
+/*_*screen size 1536x864 end*_*/
+
+/*_*screen size 1440x900 start*_*/
+@media screen and (max-width: 1440px) {
+    
+}
+/*_*screen size 1440x900 end*_*/
+
+/*_*screen size 1366x768 start*_*/
+@media screen and (max-width: 1366px) {
+    
+}
+/*_*screen size 1366x768 end*_*/
+
+/*_*screen size 1280x800 start*_*/
+@media screen and (max-width: 1280px) {
+    
+}
+/*_*screen size 1280x800 end*_*/
+
+/*_*screen size 1200x800 start*_*/
+@media screen and (max-width: 1200px) {
+
+}
+/*_*screen size 1200x800 end*_*/
+
+/*_*screen size 995x800 start*_*/
+@media screen and (max-width: 995px) {
+    
+}
+/*_*screen size 995x800 end*_*/
+
+/*_*screen size 992x1280 start*_*/
+@media screen and (max-width: 992px) {
+    
+}
+/*_*screen size 992x1280 end*_*/
+
+/*_*screen size 991x800 start*_*/
+@media screen and (max-width: 991px) {
+    .menu_bar_icon{
+        display: block;
+    }
+
+    nav.header_navigation_menu {
+        background: #F5F5F5;
+        display: none;
+    }
+    
+    .header_navigation_menu ul{
+        padding: 0;
+        margin: 0;
+        float: none;
+    }
+    
+    .header_navigation_menu ul li{
+        list-style: none;
+        float: none;
+        position: relative;
+    }
+
+    .header_navigation_menu ul li a{
+        color: #333;
+    }
+
+    .navigation_sub_menu{
+        margin-left: 15%;
+        width: 40%;
+        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.438);
+    }
+
+    .navigation_sub_sub_menu{
+        margin-left: 100%;
+        width: 50%;
+        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.438);
+    }
+
+    .user_profile_content_menu{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .user_profile_content_menu li i{
+        margin-right: .1rem;
+        font-size: 1.2rem;
+    }
+
+    .user_profile_content_menu li a{
+        font-size: 1.2rem;
+    }
+}
+/*_*screen size 991x800 end*_*/
+
+/*_*screen size 850x1024 start*_*/
+@media screen and (max-width: 850px) {
+    .entar_name_div{
+        width: 100%;
+        margin-bottom: 1rem;
+        background: #F5F5F5;
+    }
+    
+    .entar_catag_div{
+        width: 100%;
+        margin-bottom: 1rem;
+        background: #F5F5F5;
+    }
+    
+    .entar_place_div{
+        width: 100%;
+        margin-bottom: 1rem;
+        background: #F5F5F5;
+    }
+    
+    .search_btn_div{
+        width: 100%;
+        background: #F5F5F5;
+        border-radius: 0 0 .3rem .3rem;
+        overflow: hidden;
+    }
+
+    .header_heading_search_form_content form{
+        display: inherit;
+        background: none;
+    }
+
+    .header_heading_search_form_content form input{
+        width: 96.6%;
+    }
+}
+/*_*screen size 850x1024 end*_*/
+
+/*_*screen size 767x962 start*_*/
+@media screen and (max-width: 767px) {
+    .event_upconeing{
+        padding-top: 40rem;
+    }
+
+    .student_conference_date_text_content_wrapper{
+        justify-content: center;
+    }
+
+    .student_conference_date_btn_wrapper{
+        justify-content: center;
+        margin-top: 2rem;
+    }
+}
+/*_*screen size 767x962 end*_*/
+
+
+/*_*screen size 601x962 start*_*/
+@media screen and (max-width: 601px) {
+    
+}
+/*_*screen size 601x962 end*_*/
+
+/*_*screen size 575x1280 start*_*/
+@media screen and (max-width: 575px) {
+    .site_logo{
+        display: flex;
+        justify-content: center;
+    }
+
+    .login{
+        display: flex;
+        justify-content: center;
+    }
+
+    .event_upconeing{
+        padding-top: 70rem;
+    }
+}
+/*_*screen size 575x1280 end*_*/
+
+/*_*screen size 485x812 start*_*/
+@media screen and (max-width: 485px) {
+    
+}
+/*_*screen size 485x812 end*_*/
+
+/*_*screen size 450x812 start*_*/
+@media screen and (max-width: 450px) {
+    .text_crasol{
+        margin-top: 3rem;
+    }
+}
+/*_*screen size 450x812 end*_*/
+
+/*_*screen size 416x812 start*_*/
+@media screen and (max-width: 416px) {
+    
+}
+/*_*screen size 416x812 end*_*/
+
+
+/*_*screen size 414x812 start*_*/
+@media screen and (max-width: 414px) {
+    .reviews_wrapper{
+        display: inherit;
+    }
+}
+/*_*screen size 414x812 end*_*/
+
+/*_*screen size 375x812 start*_*/
+@media screen and (max-width: 375px) {
+    
+}
+/*_*screen size 375x812 end*_*/
+
+/*_*screen size 360x640 start*_*/
+@media screen and (max-width: 360px) {
+    
+}
+/*_*screen size 360x640 end*_*/
