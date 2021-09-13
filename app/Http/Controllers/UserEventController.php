@@ -113,8 +113,8 @@ class UserEventController extends Controller
     public function eventList(Request $request)
     {
         $eventList = UserEvents::all()->where('user_id', '=', (Auth::user()->id));
-
-        return view('user.eventList', compact('eventList'));
+        $categorylist = DB::table('event_categories')->get()->where('cstatus', 0);
+        return view('user.eventList', compact('eventList','categorylist'));
     }
 
     public function addEvent(Request $request)
@@ -127,6 +127,7 @@ class UserEventController extends Controller
 
     public function insertEvent(Request $request)
     {
+        
 
         if (isset(Auth::user()->id)) {
             $event_name = $request->event_name;
@@ -134,6 +135,7 @@ class UserEventController extends Controller
             $trending_event = $request->trending_event;
             $description = $request->description;
             $category = $request->category;
+           // return dd($category);
             $event_start_date = $request->event_start_date;
             $event_start_time = $request->event_start_time;
             $event_end_date = $request->event_end_date;
@@ -166,6 +168,7 @@ class UserEventController extends Controller
                     $addEvent->is_trending_event = $trending_event;
                     $addEvent->description = $description;
                     $addEvent->ecid = $category;
+                    
                     $addEvent->event_start_date = $event_start_date;
                     $addEvent->event_start_time = $event_start_time;
                     $addEvent->event_end_date = $event_end_date;
@@ -207,18 +210,24 @@ class UserEventController extends Controller
         $countries = Country::get();
         $UserEvents = UserEvents::find($id);
         $category = DB::table('event_categories')->get()->where('cstatus', 0);
-        return view('user.editEvent', compact('countries', 'UserEvents'));
+     //   $prevcategory = DB::table('event_categories')->get()->where('ecid', $id);
+        //return dd($prevcategory);
+
+       // return dd($id);
+
+        return view('user.editEvent', compact('countries', 'UserEvents','category',));
     }
 
     public function updateEvent(request $request)
     {
-        $category = $request->category;
+       
         $id = $request->id;
         $event_name = $request->event_name;
         $vanue_name = $request->vanue_name;
         $trending_event = $request->trending_event;
         $description = $request->description;
         $category = $request->category;
+    //    return dd($category);
         $event_start_date = $request->event_start_date;
         $event_start_time = $request->event_start_time;
         $event_end_date = $request->event_end_date;
@@ -234,11 +243,11 @@ class UserEventController extends Controller
         $postal_code = $request->postal_code;
         $country = $request->country;
         $eventData = UserEvents::where(['event_name' => $event_name])->where('id', '!=', $id)->first();
-        $cid = DB::table('event_categories')->get()->where('cname', $category);
+        //$cid = DB::table('event_categories')->get()->where('cname', $category);
         if (empty($eventData)) {
 
             $update_event = UserEvents::where('id', $id)
-                ->update(['event_name' => $event_name, 'venue_name' => $vanue_name, 'description' => $description, 'category' => $cid, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time, 'event_end_date' => $event_end_date, 'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude, 'event_type' => $event_type, 'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
+                ->update(['event_name' => $event_name, 'venue_name' => $vanue_name, 'description' => $description, 'ecid' => $category, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time, 'event_end_date' => $event_end_date, 'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude, 'event_type' => $event_type, 'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
 
             if ($request->image != "") {
                 $image = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();

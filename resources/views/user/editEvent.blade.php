@@ -29,6 +29,7 @@
             </div>
             <div class="card-body event-content-wrapper">
               <form action="{{ url('user/updateEvent') }}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="pl-lg-4 basic">
                   <h6 class="heading-small text-muted mb-4">Event Information</h6>
                   <div class="row">
@@ -64,7 +65,7 @@
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-6 ">
                       <div class="form-group">
-                        <input type="file" id="event_image" name="event_image" class="form-control" placeholder="Event Image" required="" accept="image/*">
+                        <input type="file" id="event_image" name="event_image" class="form-control" placeholder="Event Image" accept="image/*">
                       </div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-3">
@@ -84,6 +85,28 @@
                         <select class="form-control" name="event_location" id="event_location" required>
                           <option value="venue" @if($UserEvents->event_location == 'venue') {{ 'selected' }} @endif >Venue</option>
                           <option value="online" @if($UserEvents->event_location == 'online') {{ 'selected' }} @endif >Online event</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Event category</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <select class="form-control" name="category" id="event_type" required>
+                 
+                         @foreach ($category as $item1)
+                            @if($item1->ecid == $UserEvents->ecid) 
+                           <option value="{{ $item1->ecid }}" selected >{{$item1->cname}}</option>
+                            @endif
+                         @endforeach
+                          @foreach( $category as $item)
+                            <option value="{{ $item->ecid }}" >{{ $item->cname }}</option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
@@ -246,9 +269,10 @@
                         <label class="form-control-label">Description</label>
                       </div>
                     </div>
-                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                    <div class="col-lg-9 col-md-9 col-sm-9 ">
                       <div class="form-group">
-                        <textarea rows="4" class="form-control " placeholder="A few words about you ..." id="description" name="description" required="">{{ $UserEvents->description }}</textarea>
+                        <textarea type="text" id="content_editor" class="form-control" name="description" required="" rows="8" cols="12">{{ $UserEvents->description }}</textarea>
+
                       </div>
                     </div>
                   </div>
@@ -263,6 +287,9 @@
     </div>
 @endsection
 @section('script')
+<script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+
   <script src="{{ asset('eventadmin/summernote.bundle.js') }}"></script>
   <script src="{{ asset('eventadmin/summernote.js') }}"></script>
   <script src="{{ asset('eventadmin/jquery.validate.min.js') }}"></script>
@@ -338,5 +365,9 @@
           $('.showaddress').show();
         }
     });
+  </script>
+    <script type="text/javascript">
+      CKEDITOR.replace( 'content_editor' );
+      CKEDITOR.replace( 'econtent_editor' );
   </script>
 @endsection

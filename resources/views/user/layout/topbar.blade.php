@@ -1,5 +1,5 @@
  <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand border-bottom user-side-nav">
+    <nav class="navbar navbar-top navbar-expand border-bottom user-side-nav" >
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Search form -->

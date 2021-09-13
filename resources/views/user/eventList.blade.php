@@ -23,24 +23,25 @@
                         <table class="table table-flush" id="datatable-basic">
                             <thead class="thead-light">
                                 <tr>
+                                    <th>Action</th>
+                                    <th>Status</th>
                                     <th>Event Name</th>
                                     <th>Vanue Name</th>
                                     <th>Start Date Time</th>
                                     <th>End Date Time</th>
                                     <th>Address</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
+                                    <th>Action</th>
+                                    <th>Status</th>
                                     <th>Event Name</th>
                                     <th>Vanue Name</th>
                                     <th>Start Date Time</th>
                                     <th>End Date Time</th>
                                     <th>Address</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -48,20 +49,7 @@
                                     @foreach ($eventList as $key => $value)
 
                                         <tr>
-                                            <td>{{ $value->event_name }}</td>
-                                            <td>{{ $value->vanue_name }}</td>
-                                            <td>{{ $value->event_start_date . ' ' . $value->event_start_time }}</td>
-                                            <td>{{ $value->event_end_date . ' ' . $value->event_end_time }}</td>
-                                            <td>{{ $value->address }}</td>
-                                            <td>
-                                                <label class="switch">
-                                                    <input class="switch-input eisactive" type="checkbox"
-                                                        id="event_status_{{ $value->id }}" name="event_status"
-                                                        data-id="{{ $value->id }}" @if ($value->status == '0') {{ 'checked' }} @endif>
-                                                    <span class="switch-label" data-on="Active" data-off="Inactive"></span>
-                                                    <span class="switch-handle"></span>
-                                                </label>
-                                            </td>
+                                         
                                             <td style="width: 125px;">
                                                 {{-- <a href="{{ url( '/eventuser/eventTicket/'.$value->id )}}" class="btn btn-xs btn-primary" data-tid="{{ $value->id }}" title="Ticket"><i class="fas fa-ticket-alt"></i></a> --}}
                                                 <a href="{{ url('/user/eventBenner/' . $value->id) }}"
@@ -74,6 +62,21 @@
                                                     data-did="{{ $value->id }}" title="Delete"><span
                                                         class="fa fa-trash"></span></button>
                                             </td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input class="switch-input eisactive" type="checkbox"
+                                                        id="event_status_{{ $value->id }}" name="event_status"
+                                                        data-id="{{ $value->id }}" @if ($value->status == '0') {{ 'checked' }} @endif>
+                                                    <span class="switch-label" data-on="Active" data-off="Inactive"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </td>
+                                            <td>{{ $value->event_name }}</td>
+                                            <td>{{ $value->venue_name }}</td>
+                                            <td>{{ $value->event_start_date . ' ' . $value->event_start_time }}</td>
+                                            <td>{{ $value->event_end_date . ' ' . $value->event_end_time }}</td>
+                                            <td>{{ $value->address }}</td>
+                                           
                                         </tr>
                                     @endforeach
                                 @else

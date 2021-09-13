@@ -50,7 +50,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Event Location</label>
                         <select class="form-control" name="event_location" id="event_location" required>
@@ -59,7 +59,10 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                  
+                    
+                      
+                    <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Event Type</label>
                         <select class="form-control" name="event_type" id="event_type" required>
@@ -68,11 +71,23 @@
                         </select>
                       </div>
                     </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Event category</label>
+                        <select class="form-control" name="category" id="event_type" required>
+                          @foreach ($category as $item1)
+                              @if($item1->ecid == $UserEvents->ecid) 
+                            <option value="{{ $item1->ecid }}" selected >{{$item1->cname}}</option>
+                              @endif
+                          @endforeach
+                          @foreach( $category as $item)
+                            <option value="{{ $item->ecid }}" >{{ $item->cname }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                   </div>
 
-
-
-
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Is trending event?</label>
                         <select class="form-control" name="trending_event" id="trending_event" required>
@@ -175,7 +190,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Description</label>
-                    <textarea rows="4" class="form-control" placeholder="A few words about you ..." id="description" name="description" required="">{{ $UserEvents->description }}</textarea>
+                    <textarea type="text" id="content_editor" class="form-control" name="description" required="" rows="8" cols="12">{{ $UserEvents->description }}</textarea>
                   </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit form</button>
@@ -187,6 +202,10 @@
     </div>
 @endsection
 @section('script')
+  <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+
+
   <script src="{{ asset('eventadmin/summernote.bundle.js') }}"></script>
   <script src="{{ asset('eventadmin/summernote.js') }}"></script>
   <script src="{{ asset('eventadmin/jquery.validate.min.js') }}"></script>
@@ -257,4 +276,8 @@
         }
     });
   </script>
+      <script type="text/javascript">
+        CKEDITOR.replace( 'content_editor' );
+        CKEDITOR.replace( 'econtent_editor' );
+    </script>
 @endsection

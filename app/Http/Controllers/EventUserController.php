@@ -204,6 +204,7 @@ class EventUserController extends Controller
         $venue_name = $request->vanue_name;
         $trending_event = $request->trending_event;
         $description = $request->description;
+        $category = $request->category;
         $event_start_date = $request->event_start_date;
         $event_start_time = $request->event_start_time;
         $event_end_date = $request->event_end_date;
@@ -222,7 +223,7 @@ class EventUserController extends Controller
         if(empty($eventData)){
 
             $update_event = UserEvents::where('id', $id)
-            ->update(['event_name' => $event_name,'vanue_name' => $vanue_name, 'description' => $description, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time,'event_end_date' => $event_end_date,'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude,'event_type' => $event_type,'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
+            ->update(['event_name' => $event_name,'venue_name' => $venue_name, 'description' => $description,'ecid' => $category, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time,'event_end_date' => $event_end_date,'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude,'event_type' => $event_type,'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
 
             if ($request->image != "") {
                 $image = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();

@@ -134,7 +134,8 @@
             </div>
             <div class="card-body">
               <form action="{{ url('/user/insertBenner') }}" method="post" enctype="multipart/form-data">
-                  <div class="row event-banner-info">
+                @csrf  
+                <div class="row event-banner-info">
                     <div class="col-lg-4 col-md-6 col-sm-7">
                       <div class="form-group">
                         <input type="file" id="banner_image" name="banner_image" class="form-control" placeholder="Benner" required="">
