@@ -379,10 +379,23 @@ class FrontendController extends Controller
 
     public function eventDetails(Request $request, $eventId)
     {
-        $event = UserEvents::find($eventId);
-        $banners = EventBenner::where('event_id', $event->id)->get();
-        $category =  DB::table('event_categories')->get()->where('cstatus', 0);
-        return view('eventfrontend.event-details', compact('event', 'banners', 'category'));
+       
+        $event = UserEvents::where('id',$eventId)->first();
+        //dd($event);
+         $banners = EventBenner::where('event_id', $eventId)->get();
+         
+         $category =  DB::table('event_categories')->where('cstatus', 0)->get();
+        //$similarEvents = UserEvents::where('id','=',$eventId)->get();
+     
+        $similarEvents = UserEvents::where('ecid',$event->ecid)->inRandomOrder()->limit(5)->get(); 
+
+             //   $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();       
+                $organizor = DB::table('users')->join('user_events','users.id','user_events.user_id')->where('user_events.id',$eventId)->get();
+       //     dd($organizor);
+      //  $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();
+      //  dd($organizor);
+
+        return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor'));
     }
 
     public function about()
