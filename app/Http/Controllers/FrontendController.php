@@ -419,7 +419,7 @@ class FrontendController extends Controller
         $viewincrease = Blogs::where('id', $id)->increment('views', 1);
 
         $shareComponent = Share::page(
-            'http://peepalike.com//blogs/details/' . $id,
+            'https://peepalike.com//blogs/details/' . $id,
             'Blog Page of Peepalike',
         )
             ->facebook()

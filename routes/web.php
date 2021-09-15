@@ -13,7 +13,6 @@ use App\Http\Controllers\SocialShareButtonsController;
 */
 //
 // new code ====================================
-Route::get('/', 'FrontendController@indx')->name('index');
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/events/{type?}/{page?}', 'FrontendController@events')->name('events');
 Route::get('/about', 'FrontendController@about')->name('about');
