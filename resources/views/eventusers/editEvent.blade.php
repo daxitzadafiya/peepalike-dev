@@ -24,19 +24,32 @@
                 <h6 class="heading-small text-muted mb-4">Event Information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Event Name</label>
                         <input type="text" id="event_name" name="event_name" class="form-control" placeholder="Event Name" required="" value="{{ $UserEvents->event_name }}">
                         <input type="hidden" id="id" name="id" value="{{ $UserEvents->id }}" >
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Vanue Name</label>
                         <input type="text" id="vanue_name" name="vanue_name" class="form-control" placeholder="Vanue name" required="" value="{{ $UserEvents->event_name }}">
                       </div>
                     </div>
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Job</label>
+                        <select class="form-control" name="event_job" required>
+                          <option value=" @if($UserEvents->job == 'For CEO') {{ 'selected' }} @endif ">For CEO</option>
+                          <option value=" @if($UserEvents->job == 'For Individual') {{ 'selected' }} @endif ">For Individual</option>
+                          <option value=" @if($UserEvents->job == 'For Manager') {{ 'selected' }} @endif ">For Manager</option>
+                      </select>
+                      
+                      </div>
+                    </div>
+
                     <div class="col-lg-2">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Event Image</label>
@@ -103,12 +116,21 @@
                 <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6>
                 <div class="pl-lg-4 showaddress">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Address</label>
                         <input id="address" name="address" class="form-control" placeholder="Home Address"  type="text" required="" value="{{ $UserEvents->address }}">
                         <input type="hidden" id="latitude" name="latitude" value="{{ $UserEvents->latitude }}" >
                         <input type="hidden" id="longitude" name="longitude" value="{{ $UserEvents->longitude }}">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Space</label>
+                        <select class="form-control" name="space" id="trending_event" required>
+                          <option value=" @if($UserEvents->space == 'In room') {{ 'selected' }} @endif">In room</option>
+                          <option value="@if($UserEvents->space == 'Out Side') {{ 'selected' }} @endif">Out Side</option>
+                      </select>
                       </div>
                     </div>
                   </div>
@@ -154,6 +176,76 @@
                   </div>
                 </div>
                 <hr class="my-4" />
+  {{-- User Profile --}}
+            <h6 class="heading-small text-muted mb-4">ORGANIZOR CONTACT DETAILS</h6>
+            @foreach ($UserProfiles as $UserProfile)
+              
+           
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ $UserProfile->first_name }}" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">Phone</label>
+                    <input type="text" id="mobilenumber" name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email " value="{{ $UserProfile->email }}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Job</label>
+                        <input type="text" id="job" name="jobuser" class="form-control" placeholder="Job Name" required="" value="{{ $UserProfile->job }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Facebook</label>
+                    <input type="url" id="event_end_time" name="fbid" class="form-control" placeholder="https://" value="{{ $UserProfile->facebookid }}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Twitter</label>
+                    <input type="url" id="event_end_time" name="twit" class="form-control" placeholder="https://" value="{{ $UserProfile->twitterid }}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Linked In</label>
+                    <input type="url" id="event_end_time" name="linkedin" class="form-control" placeholder="https://" value="{{ $UserProfile->linkedinid}}">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Youtube</label>
+                    <input type="url" id="event_end_time" name="youtube" class="form-control" placeholder="https://" value="{{ $UserProfile->youtubeid }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
+            <hr class="my-4" />
+
+
+
+
+
+
                 <!-- Address -->
                 <h6 class="heading-small text-muted mb-4">Date & Time</h6>
                 <div class="pl-lg-4">
@@ -184,13 +276,19 @@
                     </div>
                   </div>
                 </div>
-                <hr class="my-4" />
+               
                 <!-- Description -->
                 <h6 class="heading-small text-muted mb-4">About Event</h6>
                 <div class="pl-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Description</label>
                     <textarea type="text" id="content_editor" class="form-control" name="description" required="" rows="8" cols="12">{{ $UserEvents->description }}</textarea>
+                  </div>
+                </div>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Event Video</label>
+                    <input type="url" id="event_end_time" name="eventvideo" class="form-control" placeholder="https://" value="{{ $UserEvents->event_video }}">
                   </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit form</button>

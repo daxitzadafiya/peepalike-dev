@@ -22,7 +22,10 @@
                     <li><a class="btn basic active" data-res="basic">Basic</a></li>
                     <li><a class="btn address" data-res="address">Address</a></li>
                     <li><a class="btn dt" data-res="dt">Date & Time</a></li>
+                    
                     <li><a class="btn about" data-res="about">About</a></li>
+                    <li><a class="btn profile" data-res="profile">Profile</a></li>
+                    <li><a class="btn social" data-res="social">Social</a></li>
                   </ul>
                 </div>
               </div>
@@ -56,6 +59,24 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Job</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <select class="form-control" name="event_job" required>
+                          <option value="For CEO">For CEO</option>
+                          <option value="For Individual">For Individual</option>
+                          <option value="For Manager">For Manager</option>
+                      </select>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
@@ -150,6 +171,23 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Space</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <select class="form-control" name="space" id="trending_event" required>
+                          <option value="no">In room</option>
+                          <option value="yes">Out Side</option>
+                      </select>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
@@ -266,7 +304,131 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Event Video Link</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" pattern="http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?" name="eventvideo" class="form-control" placeholder="https://">
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                {{-- profile --}}
+                <div class="pl-lg-4 profile" style="display: none">
+                  <h6 class="heading-small text-muted mb-4">Organizor Details</h6>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Name</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                          <input type="text" id="name" name="name" class="form-control" placeholder="Name"  value="{{ $UserProfile->first_name }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Phone</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="text" id="mobilenumber" pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}" name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Email</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email " value="{{ $UserProfile->email }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Job</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="text" id="job" name="jobuser" class="form-control" placeholder="Job Name" value="{{ $UserProfile->job }}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                {{-- social --}}
+                <div class="pl-lg-4 social" style="display: none">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Facebook</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" pattern="(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?" name="fbid" class="form-control" placeholder="https://" value="{{ $UserProfile->fbid }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Twitter</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" pattern="/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/" name="twit" class="form-control" placeholder="https://" value="{{ $UserProfile->twitterid }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Linked In</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="linkedin" class="form-control" placeholder="https://" value="{{ $UserProfile->linkedinid }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Youtube</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" pattern="http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?" name="youtube" class="form-control" placeholder="https://" value="{{ $UserProfile->youtubeid }}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <button class="btn btn-save" type="submit">Save Event</button>
               </form>
             </div>
@@ -300,7 +462,12 @@
           $('.event-content-wrapper .dt').css('display','block');
         }else if(getClass == 'about'){
           $('.event-content-wrapper .about').css('display','block');
+        }else if(getClass == "profile"){
+          $('.event-content-wrapper .profile').css('display','block');
+        }else if(getClass == "social"){
+          $('.event-content-wrapper .social').css('display','block');
         }
+        
       })
     })
    $.ajaxSetup({

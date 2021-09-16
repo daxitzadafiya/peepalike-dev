@@ -236,8 +236,8 @@
                                     <input type="text" placeholder="What are you looking for?" value=""/>
                                 </div>
                                 <div class="main-search-input-item location">
-                                    <input type="text" placeholder="Location" value=""/>
-                                    <a href="#"><i class="fa fa-dot-circle-o"></i></a>
+                                  <input type="text" placeholder="Location" id="city" value=""/>
+                                    <a href="#" id="city"><i class="fa fa-dot-circle-o" id="city"></i></a>
                                 </div>
                                 <div class="main-search-input-item">
                                     <select placeholder="All Categories" class="chosen-select" >
@@ -271,7 +271,7 @@
                                 </div>
                                 <div class="main-search-input-item location">
                                     <input type="text" placeholder="Location" value=""/>
-                                    <a href="#"><i class="fa fa-dot-circle-o"></i></a>
+                                    <a href="#" id=""><i class="fa fa-dot-circle-o"></i></a>
                                 </div>
                                 <div class="main-search-input-item">
                                     <select data-placeholder="All Categories" class="chosen-select" >
@@ -928,5 +928,7 @@
         });
       
     });
+
+
 </script>
 @endsection

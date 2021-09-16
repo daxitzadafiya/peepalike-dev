@@ -386,7 +386,7 @@ class FrontendController extends Controller
          
          $category =  DB::table('event_categories')->where('cstatus', 0)->get();
         //$similarEvents = UserEvents::where('id','=',$eventId)->get();
-     
+    
         $similarEvents = UserEvents::where('ecid',$event->ecid)->inRandomOrder()->limit(5)->get(); 
 
              //   $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();       
@@ -394,7 +394,7 @@ class FrontendController extends Controller
        //     dd($organizor);
       //  $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();
       //  dd($organizor);
-
+        //dd($organizor);
         return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor'));
     }
 
@@ -442,7 +442,7 @@ class FrontendController extends Controller
             ->whatsapp()
             ->reddit()->getRawLinks();
 
-        return view('eventfrontend.blog-details', compact('BlogList', 'metaDetail', 'Category', 'viewincrease', 'shareComponent'));
+        return view('eventfrontend.blog-details', compact('BlogList', 'metaDetail', 'Category', 'viewincrease', 'shareComponent','similarBlog'));
     }
 
     public function blogViewsHandle(Request $request, $id)

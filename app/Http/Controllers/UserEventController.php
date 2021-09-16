@@ -119,10 +119,13 @@ class UserEventController extends Controller
 
     public function addEvent(Request $request)
     {
+        //dd(Auth::user()->id);
+        $userdetails = User::find(Auth::user()->id)->first();
         $countries = Country::get();
         $category = DB::table('event_categories')->get()->where('cstatus', 0);
-
-        return view('user.addEvent', compact('countries', 'category'));
+        $UserProfile = USer::where('id',Auth::user()->id)->first();
+        //dd($UserProfile);
+        return view('user.addEvent', compact('countries', 'category','userdetails','UserProfile'));
     }
 
     public function insertEvent(Request $request)
@@ -136,6 +139,22 @@ class UserEventController extends Controller
             $description = $request->description;
             $category = $request->category;
            // return dd($category);
+           $job = $request->event_job;
+           $space = $request->space;
+
+           $eventvideo =  $request->eventvideo;
+
+           $name = $request->name ;
+           $phone = $request->mobilenumber ;
+           $email = $request->email ;
+           $userjob = $request->job ;
+   
+           $fbid = $request->fbid ;
+           $twitid = $request->twit ;
+           $linkedin = $request->linkedin;
+           $youtube = $request->youtube;
+
+
             $event_start_date = $request->event_start_date;
             $event_start_time = $request->event_start_time;
             $event_end_date = $request->event_end_date;
@@ -169,6 +188,11 @@ class UserEventController extends Controller
                     $addEvent->description = $description;
                     $addEvent->ecid = $category;
                     
+                    $addEvent->job = $job;
+                    $addEvent->space = $space;
+                    $addEvent->event_video = $eventvideo;
+
+                    
                     $addEvent->event_start_date = $event_start_date;
                     $addEvent->event_start_time = $event_start_time;
                     $addEvent->event_end_date = $event_end_date;
@@ -185,6 +209,18 @@ class UserEventController extends Controller
                     $addEvent->postal_code = $postal_code;
                     $addEvent->country = $country;
                     $addEvent->save();
+
+                    $adduser = User::find(Auth::user()->id);
+               
+                    $adduser->first_name  = $name;
+                    $adduser->job = $userjob;
+                    $adduser->mobile = $phone;
+                    $adduser->email = $email;
+                    $adduser->facebookid = $fbid;
+                    $adduser->twitterid =$twitid;
+                    $adduser->linkedinid =$linkedin;
+                    $adduser->youtubeid =$youtube;
+                    $adduser->save();
                 } catch (Exception $ex) {
                     $jsonresp = $ex->getMessage();
 
@@ -210,18 +246,27 @@ class UserEventController extends Controller
         $countries = Country::get();
         $UserEvents = UserEvents::find($id);
         $category = DB::table('event_categories')->get()->where('cstatus', 0);
+        $UserProfile = User::find(Auth::user()->id);
+       
+     //   $UserProfiles = USer::find(Auth::user()->id);
+
+   
+
      //   $prevcategory = DB::table('event_categories')->get()->where('ecid', $id);
         //return dd($prevcategory);
 
        // return dd($id);
 
-        return view('user.editEvent', compact('countries', 'UserEvents','category',));
+        return view('user.editEvent', compact('countries', 'UserEvents','category','UserProfile'));
     }
 
     public function updateEvent(request $request)
     {
        
         $id = $request->id;
+        $job = $request->event_job;
+        $space = $request->space;
+        $eventvideo =  $request->eventvideo;
         $event_name = $request->event_name;
         $vanue_name = $request->vanue_name;
         $trending_event = $request->trending_event;
@@ -242,12 +287,27 @@ class UserEventController extends Controller
         $state = $request->state;
         $postal_code = $request->postal_code;
         $country = $request->country;
+
+
+        $name = $request->name ;
+        $phone = $request->mobilenumber ;
+        $email = $request->email ;
+        $userjob = $request->jobuser ;
+
+        $fbid = $request->fbid ;
+        $twitid = $request->twit ;
+        $linkedin = $request->linkedin;
+        $youtube = $request->youtube;
+
+
+
         $eventData = UserEvents::where(['event_name' => $event_name])->where('id', '!=', $id)->first();
         //$cid = DB::table('event_categories')->get()->where('cname', $category);
         if (empty($eventData)) {
 
             $update_event = UserEvents::where('id', $id)
-                ->update(['event_name' => $event_name, 'venue_name' => $vanue_name, 'description' => $description, 'ecid' => $category, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time, 'event_end_date' => $event_end_date, 'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude, 'event_type' => $event_type, 'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
+                ->update(['event_name' => $event_name, 'venue_name' => $vanue_name, 'description' => $description,'job'=>$job,'space'=>$space,'event_video'=>$eventvideo, 'ecid' => $category, 'event_start_date' => $event_start_date, 'event_start_time' => $event_start_time, 'event_end_date' => $event_end_date, 'event_end_time' => $event_end_time, 'event_location' => $event_location, 'distance' => $distance, 'latitude' => $latitude, 'longitude' => $longitude, 'event_type' => $event_type, 'address' => $address, 'city' => $city, 'state' => $state, 'postal_code' => $postal_code, 'country' => $country, 'is_trending_event' => $trending_event]);
+            $update_profile = User::where('id', Auth::user()->id)->update(['first_name'=>$name,'email'=>$email,'job'=>$userjob,'mobile'=>$phone,'youtubeid'=>$youtube,'linkedinid'=>$linkedin,'twitterid'=>$twitid,'facebookid'=>$fbid]);
 
             if ($request->image != "") {
                 $image = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();

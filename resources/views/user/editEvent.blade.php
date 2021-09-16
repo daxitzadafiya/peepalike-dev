@@ -23,6 +23,9 @@
                     <li><a class="btn address" data-res="address">Address</a></li>
                     <li><a class="btn dt" data-res="dt">Date & Time</a></li>
                     <li><a class="btn about" data-res="about">About</a></li>
+                 
+                    <li><a class="btn profile" data-res="profile">Profile</a></li>
+                    <li><a class="btn social" data-res="social">Social</a></li>
                   </ul>
                 </div>
               </div>
@@ -54,6 +57,23 @@
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
                       <div class="form-group">
                         <input type="text" id="vanue_name" name="vanue_name" class="form-control" placeholder="Vanue name" required="" value="{{ $UserEvents->event_name }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Job</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <select class="form-control" name="event_job" required>
+                          <option value=" @if($UserEvents->job == 'For CEO') {{ 'selected' }} @endif ">For CEO</option>
+                          <option value=" @if($UserEvents->job == 'For Individual') {{ 'selected' }} @endif ">For Individual</option>
+                          <option value=" @if($UserEvents->job == 'For Manager') {{ 'selected' }} @endif ">For Manager</option>
+                      </select>
                       </div>
                     </div>
                   </div>
@@ -156,6 +176,21 @@
                         <input id="address" name="address" class="form-control" placeholder="Home Address"  type="text" required="" value="{{ $UserEvents->address }}">
                         <input type="hidden" id="latitude" name="latitude" value="{{ $UserEvents->latitude }}" >
                         <input type="hidden" id="longitude" name="longitude" value="{{ $UserEvents->longitude }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Space</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <select class="form-control" name="space" id="trending_event" required>
+                          <option value=" @if($UserEvents->space == 'In room') {{ 'selected' }} @endif">In room</option>
+                          <option value="@if($UserEvents->space == 'Out Side') {{ 'selected' }} @endif">Out Side</option>
+                      </select>
                       </div>
                     </div>
                   </div>
@@ -276,8 +311,138 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Event Video Link</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="eventvideo" class="form-control" placeholder="https://" value="{{ $UserEvents->event_video }}">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button class="btn btn-save" type="submit">Save Event</button>
+                {{-- profile --}}
+             
+                <div class="pl-lg-4 profile" style="display: none">
+                  <h6 class="heading-small text-muted mb-4">Organizor Details</h6>
+                 
+                    {{-- @foreach ( $UserProfiles as $UserProfile)
+                       --}}
+                  
+                  
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Name</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ $UserProfile->first_name }}" >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Phone</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="text" id="mobilenumber" name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Email</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email " value="{{ $UserProfile->email }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Job</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="text" id="job" name="jobuser" class="form-control" placeholder="Job Name" value="{{ $UserProfile->job }}">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                {{-- social --}}
+                <div class="pl-lg-4 social" style="display: none">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Facebook</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="fbid" class="form-control" placeholder="https://" value="{{ $UserProfile->facebookid }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label">Twitter</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="twit" class="form-control" placeholder="https://" value="{{ $UserProfile->twitterid }}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Linked In</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="linkedin" class="form-control" placeholder="https://" value="{{ $UserProfile->linkedinid}}">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 ">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Youtube</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-9 col-sm-9 ">
+                      <div class="form-group">
+                        <input type="url" id="event_end_time" name="youtube" class="form-control" placeholder="https://" value="{{ $UserProfile->youtubeid }}">
+                      </div>
+                    </div>
+                  </div>
+             
+                </div>
+                {{-- @endforeach --}}
+                <button class="btn btn-save" type="submit">Update</button>
               </form>
             </div>
           </div>
@@ -310,6 +475,10 @@
           $('.event-content-wrapper .dt').css('display','block');
         }else if(getClass == 'about'){
           $('.event-content-wrapper .about').css('display','block');
+        }else if(getClass == "profile"){
+          $('.event-content-wrapper .profile').css('display','block');
+        }else if(getClass == "social"){
+          $('.event-content-wrapper .social').css('display','block');
         }
       })
     })

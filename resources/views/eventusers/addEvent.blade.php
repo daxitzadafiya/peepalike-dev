@@ -24,19 +24,29 @@
                 <h6 class="heading-small text-muted mb-4">Event Information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-username">Event Name</label>
                         <input type="text" id="event_name" name="event_name" class="form-control" placeholder="Event Name" required="">
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Vanue Name</label>
                         <input type="text" id="vanue_name" name="vanue_name" class="form-control" placeholder="Vanue name" required="">
                       </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Job</label>
+                        <select class="form-control" name="event_job" required>
+                          <option value="For CEO">For CEO</option>
+                          <option value="For Individual">For Individual</option>
+                          <option value="For Manager">For Manager</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Event Image</label>
                         <input type="file" id="event_image" name="event_image" class="form-control" placeholder="Event Image" required="" accept="image/*">
@@ -92,7 +102,7 @@
                 <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6>
                 <div class="pl-lg-4 showaddress">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                       <div class="form-group">
                         <label class="form-control-label" for="input-address">Address</label>
                         <input id="address" name="address" class="form-control" placeholder="Home Address"  type="text" required="">
@@ -100,17 +110,29 @@
                         <input type="hidden" id="longitude" name="longitude" value="">
                       </div>
                     </div>
+                  
+                 
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Space</label>
+                        <select class="form-control" name="space" id="trending_event" required>
+                          <option value="no">In room</option>
+                          <option value="yes">Out Side</option>
+                      </select>
+                      </div>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3">
-                      <div class="form-group">
-                        <label class="form-control-label" for="input-city">City</label>
-                        <input id="city" name="city" class="form-control" placeholder="Home Address"  type="text" required="">
-                        <!-- <select class="form-control" name="city" id="city" required>
-                            <option>Select City</option>
-                        </select> -->
-                      </div>
+                        <div class="form-group">
+                          <label class="form-control-label" for="input-city">City</label>
+                          <input id="city" name="city" class="form-control" placeholder="Home Address"  type="text" required="">
+                          <!-- <select class="form-control" name="city" id="city" required>
+                              <option>Select City</option>
+                          </select> -->
+                        </div>
                     </div>
+                
                     <div class="col-lg-3">
                       <div class="form-group">
                         <label class="form-control-label" for="input-city">State</label>
@@ -136,6 +158,66 @@
                       <div class="form-group">
                         <label class="form-control-label" for="input-country">Postal code</label>
                         <input type="number" id="postal_code" name="postal_code" class="form-control" placeholder="Postal code" required="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4" />
+
+                <!-- Profile  -->
+                <h6 class="heading-small text-muted mb-4">Organizor Contact Details</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ $UserProfile->first_name }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">Phone</label>
+                        <input type="text" id="mobilenumber" pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}"  name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email " value="{{ $UserProfile->email }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Job</label>
+                        <input type="text" id="job" name="jobuser" class="form-control" placeholder="Job Name" required="" value="{{ $UserProfile->job }}">
+                      </div>
+                    </div>
+
+                    {{-- <a href="#" ><i class="fas fa-plus-square"></i></a> --}}
+ {{-- Social   Account Details --}}
+                    
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Facebook</label>
+                        <input type="url" id="event_end_time"pattern="(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?" name="fbid" class="form-control" placeholder="https://" value="{{ $UserProfile->fbid }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Twitter</label>
+                        <input type="url" id="event_end_time" pattern="/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/ "name="twit" class="form-control" placeholder="https://" value="{{ $UserProfile->twitterid }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Linked In</label>
+                        <input type="url" id="event_end_time" name="linkedin" class="form-control" placeholder="https://" value="{{ $UserProfile->linkedinid }}">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Youtube</label>
+                        <input type="url" id="event_end_time" pattern="http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?" name="youtube" class="form-control" placeholder="https://" value="{{ $UserProfile->youtubeid }}">
                       </div>
                     </div>
                   </div>
@@ -178,6 +260,13 @@
                   <div class="form-group">
                     <label class="form-control-label">Description</label>
                     <textarea type="text" id="content_editor" class="form-control" name="description" required="" rows="8" cols="8"></textarea>
+                  </div>
+                </div>
+                <h6 class="heading-small text-muted mb-4">Event Video Link</h6>
+                <div class="pl-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label">Event Video</label>
+                    <input type="url" id="event_end_time" pattern="http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?" name="eventvideo" class="form-control" placeholder="https://">
                   </div>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit form</button>
