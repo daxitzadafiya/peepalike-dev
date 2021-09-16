@@ -38,7 +38,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">Event Name</label>
+                        <label class="form-control-label" for="input-username">Event Name</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -50,7 +50,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Vanue Name</label>
+                        <label class="form-control-label" for="input-first-name">Vanue Name</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -63,7 +63,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Job</label>
+                        <label class="form-control-label" for="input-first-name">Job</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -80,7 +80,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event category</label>
+                        <label class="form-control-label" for="input-first-name">Event category</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -99,7 +99,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Image</label>
+                        <label class="form-control-label" for="input-first-name">Event Image</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -111,7 +111,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Location</label>
+                        <label class="form-control-label" for="input-first-name">Event Location</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -126,7 +126,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Type</label>
+                        <label class="form-control-label" for="input-first-name">Event Type</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -141,7 +141,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Is trending event?</label>
+                        <label class="form-control-label" for="input-first-name">Is trending event?</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -156,11 +156,11 @@
                 </div>
                 <!-- Address -->
                 <div class="pl-lg-4 address showaddress" style="display: none">
-                  <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6>
+                  <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6><span style="color: red">(*)</span>
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Address</label>
+                        <label class="form-control-label" for="input-address">Address</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -175,7 +175,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Space</label>
+                        <label class="form-control-label" for="input-address">Space</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -191,7 +191,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">City</label>
+                        <label class="form-control-label" for="input-city">City</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -203,7 +203,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">State</label>
+                        <label class="form-control-label" for="input-city">State</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -215,7 +215,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Country</label>
+                        <label class="form-control-label" for="input-country">Country</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -227,7 +227,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
+                        <label class="form-control-label" for="input-country">Postal code</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-9 col-sm-9 ">
@@ -295,7 +295,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label">Description</label>
+                        <label class="form-control-label">Description</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-9 ">
@@ -308,7 +308,7 @@
                   <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 ">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Event Video Link</label>
+                        <label class="form-control-label" for="input-country">Event Video Link</label><span style="color: red">(*)</span>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-9 col-sm-9 ">

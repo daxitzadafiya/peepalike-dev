@@ -43,7 +43,7 @@ class FrontendController extends Controller
         //  $users = DB::table('users')
         //     ->latest('id')->get();
         // $_SERVER['REMOTE_ADDR']
-        $arr_ip = geoip()->getLocation('150.107.241.89');
+        $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         //dd($arr_ip);
         $city = $arr_ip->city;
 
@@ -58,7 +58,7 @@ class FrontendController extends Controller
     }
     public function events(Request $request)
     {
-        $arr_ip = geoip()->getLocation('150.107.241.89');
+        $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         $city = $arr_ip->city;
 
         $perPage = 9;
@@ -405,7 +405,7 @@ class FrontendController extends Controller
     public function eventDetails(Request $request, $eventId)
     {
        
-        $arr_ip = geoip()->getLocation('150.107.241.89');
+        $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         $userLat = $arr_ip->lat;
         $userLon = $arr_ip->lon;
 

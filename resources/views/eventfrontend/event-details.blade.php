@@ -244,13 +244,23 @@
 		                </div>
 	                    <div class="map-container">
 	                        <div id="singleMap"></div>
+                            
 	                    </div>
+                        
+                       
 
-                        <p>{{ $distance }} KM</p>
                         {{-- <div class="" id="distance">
                             <button onClick="getLocation()">Get</button><p id="distance">Distance</p>
                         </div> --}}
                 	</div>
+                    <div class="list-single-main-media fl-wrap">
+                        <div class="list-single-main-item-title fl-wrap">
+                            <div class="distance" style="background-color: #2f3b59; ">
+                                <i class="fa fas fa-location-arrow" style="color: honeydew;"> {{ Str::limit($distance, 4) }} KM Away</i>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="list-single-main-media fl-wrap">
                         <div class="list-single-main-item-title fl-wrap">
                             <h3>Event Banners</h3>

@@ -26,19 +26,19 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-username">Event Name</label>
+                        <label class="form-control-label" for="input-username">Event Name</label><span style="color: red">(*)</span>
                         <input type="text" id="event_name" name="event_name" class="form-control" placeholder="Event Name" required="">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Vanue Name</label>
+                        <label class="form-control-label" for="input-first-name">Vanue Name</label><span style="color: red">(*)</span>
                         <input type="text" id="vanue_name" name="vanue_name" class="form-control" placeholder="Vanue name" required="">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Job</label>
+                        <label class="form-control-label" for="input-first-name">Job</label><span style="color: red">(*)</span>
                         <select class="form-control" name="event_job" required>
                           <option value="For CEO">For CEO</option>
                           <option value="For Individual">For Individual</option>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Image</label>
+                        <label class="form-control-label" for="input-first-name">Event Image</label><span style="color: red">(*)</span>
                         <input type="file" id="event_image" name="event_image" class="form-control" placeholder="Event Image" required="" accept="image/*">
                       </div>
                     </div>
@@ -56,7 +56,7 @@
                   <div class="row">
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Location</label>
+                        <label class="form-control-label" for="input-first-name">Event Location</label><span style="color: red">(*)</span>
                         <select class="form-control" name="event_location" id="event_location" required>
                             <option value="venue">Venue</option>
                             <option value="online">Online event</option>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Event Ticket</label>
+                        <label class="form-control-label" for="input-first-name">Event Ticket</label><span style="color: red">(*)</span>
                         <select class="form-control" name="event_type" id="event_type" required>
                             <option value="get ticket">Get Ticket</option>
                             <option value="free">Free</option>
@@ -74,7 +74,7 @@
                     </div>
                       <div class="col-lg-3 ">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">Category</label>
+                          <label class="form-control-label" for="input-first-name">Category</label><span style="color: red">(*)</span>
                         <select class="form-control" name="category" id="event_type" required>
                             <option value="get ticket">Select Category</option>
                             @foreach( $category as $item)
@@ -88,7 +88,7 @@
 
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-first-name">Is trending event?</label>
+                        <label class="form-control-label" for="input-first-name">Is trending event?</label><span style="color: red">(*)</span>
                         <select class="form-control" name="trending_event" id="trending_event" required>
                             <option value="no">No</option>
                             <option value="yes">Yes</option>
@@ -99,12 +99,12 @@
                 </div>
                 <hr class="my-4 showaddress" />
                 <!-- Address -->
-                <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6>
+                <h6 class="heading-small text-muted mb-4 showaddress">Street Address</h6><span style="color: red">(*)</span>
                 <div class="pl-lg-4 showaddress">
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Address</label>
+                        <label class="form-control-label" for="input-address">Address</label><span style="color: red">(*)</span>
                         <input id="address" name="address" class="form-control" placeholder="Home Address"  type="text" required="">
                         <input type="hidden" id="latitude" name="latitude" value="">
                         <input type="hidden" id="longitude" name="longitude" value="">
@@ -114,7 +114,7 @@
                  
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-address">Space</label>
+                        <label class="form-control-label" for="input-address">Space</label><span style="color: red">(*)</span>
                         <select class="form-control" name="space" id="trending_event" required>
                           <option value="no">In room</option>
                           <option value="yes">Out Side</option>
@@ -125,7 +125,7 @@
                   <div class="row">
                     <div class="col-lg-3">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-city">City</label>
+                          <label class="form-control-label" for="input-city">City</label><span style="color: red">(*)</span>
                           <input id="city" name="city" class="form-control" placeholder="Home Address"  type="text" required="">
                           <!-- <select class="form-control" name="city" id="city" required>
                               <option>Select City</option>
@@ -135,7 +135,7 @@
                 
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">State</label>
+                        <label class="form-control-label" for="input-city">State</label><span style="color: red">(*)</span>
                         <input id="state" name="state" class="form-control" placeholder="Home Address"  type="text"  required="">
                         <!-- <select class="form-control" name="state" id="state" required>
                             <option >Select State</option>
@@ -144,7 +144,7 @@
                     </div>
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Country</label>
+                        <label class="form-control-label" for="input-country">Country</label><span style="color: red">(*)</span>
                         <input id="country" name="country" class="form-control" placeholder="Home Address"  type="text" required="">
                         <!-- <select class="form-control" name="country" id="country" required="">
                             <option>Select Country</option>
@@ -156,7 +156,7 @@
                     </div>
                     <div class="col-lg-3">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Postal code</label>
+                        <label class="form-control-label" for="input-country">Postal code</label><span style="color: red">(*)</span>
                         <input type="number" id="postal_code" name="postal_code" class="form-control" placeholder="Postal code" required="">
                       </div>
                     </div>
@@ -170,26 +170,26 @@
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-city">Name</label>
+                        <label class="form-control-label" for="input-city">Name</label><span style="color: red">(*)</span>
                         <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ $UserProfile->first_name }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         {{-- pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}"  --}}
-                        <label class="form-control-label" for="input-city">Phone</label>
+                        <label class="form-control-label" for="input-city">Phone</label><span style="color: red">(*)</span>
                         <input type="number" id="mobilenumber"  name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Email</label>
+                        <label class="form-control-label" for="input-country">Email</label><span style="color: red">(*)</span>
                         <input type="email" id="email" name="email" class="form-control" placeholder="Email " value="{{ $UserProfile->email }}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="input-country">Job</label>
+                        <label class="form-control-label" for="input-country">Job</label><span style="color: red">(*)</span>
                         <input type="text" id="job" name="jobuser" class="form-control" placeholder="Job Name" required="" value="{{ $UserProfile->job }}">
                       </div>
                     </div>
