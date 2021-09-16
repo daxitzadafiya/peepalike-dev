@@ -71,8 +71,8 @@
 
 					<div class="listsearch-input-text" id="autocomplete-container">
 						<label><i class="mbri-map-pin"></i> Enter Addres </label>
-						<input type="text" placeholder="Destination , Area , Street" class="qodef-archive-places-search" value=""/>
-						<a  href="#"  class="loc-act qodef-archive-current-location"><i class="fa fa-dot-circle-o"></i></a>
+						<input type="text" placeholder="Destination , Area , Street" name="area" class="qodef-archive-places-search" value=""/>
+						<a  href="#"  class="loc-act qodef-archive-current-location" id="location" onclick="getcityname()"><i class="fa fa-dot-circle-o"></i></a>
 					</div>
                     <!-- hidden-listing-filter -->
                     <div class="hidden-listing-filter fl-wrap">
@@ -217,7 +217,10 @@
     }
 
 
+ 
+   function getcityname(){
+       let area = document.getElementById('area');
+       area.innerText = $city;
+   }
 
-
-</script>
 @endsection

@@ -22,10 +22,32 @@ use Share;
 
 class FrontendController extends Controller
 {
+    public function getDistance($lat1, $lon1, $lat2, $lon2)
+    {
+        $pi80 = M_PI / 180; 
+        $lat1 *= $pi80; 
+        $lon1 *= $pi80; 
+        $lat2 *= $pi80; 
+        $lon2 *= $pi80; 
+        $r = 6372.797; // mean radius of Earth in km 
+        $dlat = $lat2 - $lat1; 
+        $dlon = $lon2 - $lon1; 
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2)  *sin($dlon / 2) * sin($dlon / 2); 
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
+        $km = $r * $c; 
+        //echo ' '.$km; 
+        return $km; 
+    }
     public function index()
     {
         //  $users = DB::table('users')
         //     ->latest('id')->get();
+        // $_SERVER['REMOTE_ADDR']
+        $arr_ip = geoip()->getLocation('150.107.241.89');
+        //dd($arr_ip);
+        $city = $arr_ip->city;
+
+        //return dd($city);
         $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->get();
         $categories = DB::table('service_category')->get();
         $BlogList = Blogs::where('status', 'active')->orderBy('id', 'desc')->get();
@@ -36,6 +58,9 @@ class FrontendController extends Controller
     }
     public function events(Request $request)
     {
+        $arr_ip = geoip()->getLocation('150.107.241.89');
+        $city = $arr_ip->city;
+
         $perPage = 9;
         if ($request->type == 'trending') {
             $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->paginate($perPage);
@@ -56,7 +81,7 @@ class FrontendController extends Controller
         }
         $totalPages = ceil(count(UserEvents::where('event_start_date', '>=', date('Y-m-d'))->get()) / $perPage);
         $category =  DB::table('event_categories')->get()->where('cstatus', 0);
-        return view('eventfrontend.event_list', compact('events', 'category', 'totalPages'));
+        return view('eventfrontend.event_list', compact('events', 'category', 'totalPages','city'));
         //return view('eventfrontend.event_list', get_defined_vars());
     }
     public function jobsList(Request $request)
@@ -380,7 +405,18 @@ class FrontendController extends Controller
     public function eventDetails(Request $request, $eventId)
     {
        
+        $arr_ip = geoip()->getLocation('150.107.241.89');
+        $userLat = $arr_ip->lat;
+        $userLon = $arr_ip->lon;
+
+
         $event = UserEvents::where('id',$eventId)->first();
+
+        $eventLat = $event->latitude;
+        $eventLon = $event->longitude;
+
+        $distance = $this->getDistance($eventLat,$eventLon,$userLat,$userLon);
+      //  dd($distance);
         //dd($event);
          $banners = EventBenner::where('event_id', $eventId)->get();
          
@@ -395,7 +431,7 @@ class FrontendController extends Controller
       //  $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();
       //  dd($organizor);
         //dd($organizor);
-        return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor'));
+        return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor','distance'));
     }
 
     public function about()

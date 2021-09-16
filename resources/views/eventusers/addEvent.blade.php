@@ -176,8 +176,9 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
+                        {{-- pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}"  --}}
                         <label class="form-control-label" for="input-city">Phone</label>
-                        <input type="text" id="mobilenumber" pattern="[0-9]{5}[-][0-9]{7}[-][0-9]{1}"  name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
+                        <input type="number" id="mobilenumber"  name="mobilenumber" class="form-control" placeholder="Mobile Number" value="{{ $UserProfile->mobile }}">
                       </div>
                     </div>
                     <div class="col-lg-6">

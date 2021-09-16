@@ -245,6 +245,8 @@
 	                    <div class="map-container">
 	                        <div id="singleMap"></div>
 	                    </div>
+
+                        <p>{{ $distance }} KM</p>
                         {{-- <div class="" id="distance">
                             <button onClick="getLocation()">Get</button><p id="distance">Distance</p>
                         </div> --}}

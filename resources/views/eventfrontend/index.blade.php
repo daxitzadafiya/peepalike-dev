@@ -236,8 +236,8 @@
                                     <input type="text" placeholder="What are you looking for?" value=""/>
                                 </div>
                                 <div class="main-search-input-item location">
-                                  <input type="text" placeholder="Location" id="city" value=""/>
-                                    <a href="#" id="city"><i class="fa fa-dot-circle-o" id="city"></i></a>
+                                  <input type="text" placeholder="Location" id="city" value="{{ $city }}"/>
+                                    <a href="#" id="location"><i class="fa fa-dot-circle-o" id="city"></i></a>
                                 </div>
                                 <div class="main-search-input-item">
                                     <select placeholder="All Categories" class="chosen-select" >

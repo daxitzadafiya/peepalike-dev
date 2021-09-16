@@ -23,6 +23,7 @@
         "laravelcollective/html": "^6.2",
         "pusher/pusher-php-server": "^7.0",
         "stevebauman/location": "^6.1",
+        "torann/geoip": "^3.0",
         "twilio/sdk": "^6.27",
         "tymon/jwt-auth": "^1.0"
     },

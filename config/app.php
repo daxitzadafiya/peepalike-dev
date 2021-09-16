@@ -139,7 +139,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Auth\AuthServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
+         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
@@ -240,6 +241,7 @@ return [
         'Input' => Illuminate\Support\Facades\Request::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
     ],
 
     'PUSHER_APP_KEY' => env('PUSHER_APP_KEY'),
