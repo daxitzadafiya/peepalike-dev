@@ -411,11 +411,13 @@
                                 <div class="overlay"></div>
                             </div>
                         </a>
+
+                       
                         <div class="geodir-category-content fl-wrap">
                             <a class="listing-geodir-category" href="{{ URL::to('/event/details/'.$trendEvent->id) }}">{{ strtoupper($trendEvent->event_type) }}</a>
                             <h3><a href="{{ URL::to('/event/details/'.$trendEvent->id) }}">{{ $trendEvent->event_name }}</a></h3>
-                            <p>{{ $trendEvent->vanue_name }} | {{ $trendEvent->event_location }}</p>
-                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $trendEvent->id }}">Calculate Distance to Venue</span></p>
+                            <p>{{ $trendEvent->venue_name }} | {{ $trendEvent->event_location }}</p>
+                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $trendEvent->id }}"> {{ Str::limit(App\Http\Controllers\FrontendController::getDistance($userLat,$userLon,$trendEvent->latitude,$trendEvent->longitude),4)  }} KM Away</span></p>
                             <p id="long_{{ $trendEvent->id }}" style="display:none">{{ $trendEvent->longitude }}</p>
                             <p id="lat_{{ $trendEvent->id }}" style="display:none">{{ $trendEvent->latitude }}</p>
                             <div class="geodir-category-location"><a href="{{ URL::to('/event/details/'.$trendEvent->id) }}"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ $trendEvent->address }}</a></div>
@@ -451,7 +453,7 @@
     <div class="list-carousel fl-wrap card-listing ">
         <!--listing-carousel-->
         <div class="listing-carousel fl-wrap upcoming-events-carousel">
-            @foreach($events as $event)
+            @foreach($upcomingevents as $event)
             <!--slick-slide-item-->
             <div class="slick-slide-item">
                 <!-- listing-item -->
@@ -466,9 +468,9 @@
                         <div class="geodir-category-content fl-wrap">
                             <a class="listing-geodir-category" href="{{ URL::to('/event/details/'.$event->id) }}">{{ strtoupper($event->event_type) }}</a>
                             <h3><a href="{{ URL::to('/event/details/'.$event->id) }}">{{ $event->event_name }}</a></h3>
-                            <p>{{ $event->vanue_name }} | {{ $event->event_location }}</p>
+                            <p>{{ $event->venue_name }} | {{ $event->event_location }}</p>
                             <p><i class="fa fa-calendar-check-o"></i> <span>{{ $event->event_start_date }} | {{ $event->event_start_time }}</span></p>
-                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}">Calculate Distance to Venue</span></p>
+                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}"> {{ Str::limit(App\Http\Controllers\FrontendController::getDistance($userLat,$userLon,$event->latitude,$event->longitude), 4)  }} KM Away</span></p>
                             <p id="long_{{ $event->id }}" style="display:none">{{ $event->longitude }}</p>
                             <p id="lat_{{ $event->id }}" style="display:none">{{ $event->latitude }}</p>
                             <div class="geodir-category-options fl-wrap">

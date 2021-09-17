@@ -17,6 +17,8 @@ Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/events/{type?}/{page?}', 'FrontendController@events')->name('events');
 Route::get('/about', 'FrontendController@about')->name('about');
 Route::get('/blogs', 'FrontendController@blogs')->name('blogs');
+Route::get('/blogs/tag/{tags}', 'FrontendController@blogSearchbytags')->name('blogstag');
+Route::get('/blogs/keyword', 'FrontendController@blogSearchbykeyword')->name('blogkeyword');
 Route::get('/blogs/details/{id}', 'FrontendController@blogsDetails')->name('blogsDetails');
 Route::post('/blogs/views/{id}', 'FrontendController@blogViewsHandle')->name('blogViews');
 Route::get('/faq', 'FrontendController@faqPage')->name('faqPage');

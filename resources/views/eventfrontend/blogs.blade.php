@@ -153,8 +153,9 @@
                                     <h3>Search In blog : </h3>
                                 </div>
                                 <div class="box-widget search-widget">
-                                    <form action="#" class="fl-wrap">
-                                        <input name="se" id="se" type="text" class="search" placeholder="Search.." value="Search..." />
+                                    <form action="/blogs/keyword" method="GET" class="fl-wrap">
+                                        @csrf
+                                        <input name="search" id="se" type="text" class="search" placeholder="Search.." value="Search..." />
                                         <button class="search-submit" id="submit_btn"><i class="fa fa-search transition"></i> </button>
                                     </form>
                                 </div>
@@ -164,9 +165,10 @@
                                     <h3>Tags: </h3>
                                 </div>
                                 <div class="list-single-tags tags-stylwrap">
+
                                     @if ($Tags)
                                         @foreach ($Tags as $value)
-                                            <a href="#">{{$value->tag_name}}</a>
+                                            <a href="/blogs/tag/{{$value->tag_name }}">{{$value->tag_name}}</a>
                                         @endforeach
                                     @endif
                                 </div>
@@ -196,7 +198,7 @@
             <div class="list-main-wrap fl-wrap card-listing">
                 @if($BlogList)
                     @foreach ($BlogList as $value)
-                    <div class="listing-item">
+                    <div class="listing-item" style="height: 900px">
                         <!-- article> -->
                         <article class="geodir-category-listing fl-wrap">
                             <div class="list-single-main-media fl-wrap">

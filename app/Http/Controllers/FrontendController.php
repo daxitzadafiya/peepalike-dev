@@ -22,7 +22,7 @@ use Share;
 
 class FrontendController extends Controller
 {
-    public function getDistance($lat1, $lon1, $lat2, $lon2)
+    public static  function getDistance($lat1, $lon1, $lat2, $lon2)
     {
         $pi80 = M_PI / 180; 
         $lat1 *= $pi80; 
@@ -46,12 +46,45 @@ class FrontendController extends Controller
         $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         //dd($arr_ip);
         $city = $arr_ip->city;
-
+       // $city = 'Surat';  // chamhe it when upload it on site
         //return dd($city);
+        $trendingEvents = UserEvents::where('city', $city)->where('is_trending_event','yes')->get();
+        if(count($trendingEvents) < 1)
+        {   
+            //dd("gate 1");
+            $trendingEvents = UserEvents::where('city', $city)->get();
+            if(count($trendingEvents) < 1)
+             {
+                 $trendingEvents = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->get();
+             }
+        }
+        //dd($trendingEvents);
+        
+        $upcomingevents = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('city',$city)->where('status','0')->where('city', $city)->get();
+        if(count($upcomingevents) < 1 )
+        {   
+            //dd("gate 1");
+            $upcomingevents = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('status','0')->get();
+        }
+   //     dd($upcomingevents);
+     //$_SERVER['REMOTE_ADDR']
+         $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
+         $userLat = $arr_ip->lat;
+         $userLon = $arr_ip->lon;
+
+
+        // $event = UserEvents::where('status',0)->first();
+
+        // $eventLat = $event->latitude;
+        // $eventLon = $event->longitude;
+
+        // $distance = $this->getDistance($eventLat,$eventLon,$userLat,$userLon);
+
         $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->get();
+    //dd($events);
         $categories = DB::table('service_category')->get();
         $BlogList = Blogs::where('status', 'active')->orderBy('id', 'desc')->get();
-        $trendingEvents = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->get();
+     //   $trendingEvents = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->get();
         // $address = DB::table('user_address')->get();
         //return view('frontend.index', get_defined_vars());
         return view('eventfrontend.index', get_defined_vars());
@@ -405,6 +438,7 @@ class FrontendController extends Controller
     public function eventDetails(Request $request, $eventId)
     {
        
+
         $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         $userLat = $arr_ip->lat;
         $userLon = $arr_ip->lon;
@@ -431,7 +465,7 @@ class FrontendController extends Controller
       //  $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();
       //  dd($organizor);
         //dd($organizor);
-        return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor','distance'));
+        return view('eventfrontend.event-details', compact('event', 'banners', 'category','similarEvents','organizor','distance','userLat','userLon'));
     }
 
     public function about()
@@ -449,6 +483,33 @@ class FrontendController extends Controller
 
         return view('eventfrontend.blogs', get_defined_vars());
     }
+
+    public function blogSearchbykeyword(Request $request)
+    {
+        $keyword = $request->search ;
+        $perPage = 6;
+        $BlogList = Blogs::where('status', 'active')->orderBy('id', 'desc')->where('blog_title', 'LIKE', '%' . $keyword . '%')->paginate($perPage);
+        $Category = blogCategory::where('is_active', 'active')->orderBy('id', 'desc')->limit(5)->get();
+        $Tags = BlogTags::where('status', 'active')->orderBy('id', 'desc')->limit(10)->get();
+        $totalPages = ceil(count(Blogs::where('created_at', '<=', date('Y-m-d'))->get()) / $perPage);
+
+        return view('eventfrontend.blogs', get_defined_vars());
+    }
+
+
+
+
+    public function blogSearchbytags($tags)
+    {
+        $perPage = 6;
+        $BlogList = Blogs::where('status', 'active')->orderBy('id', 'desc')->where('blog_tags',$tags)->paginate($perPage);
+        $Category = blogCategory::where('is_active', 'active')->orderBy('id', 'desc')->limit(5)->get();
+        $Tags = BlogTags::where('status', 'active')->orderBy('id', 'desc')->limit(10)->get();
+        $totalPages = ceil(count(Blogs::where('created_at', '<=', date('Y-m-d'))->get()) / $perPage);
+
+        return view('eventfrontend.blogs', get_defined_vars());
+    }
+
 
     public function blogsDetails(Request $request, $id)
     {
