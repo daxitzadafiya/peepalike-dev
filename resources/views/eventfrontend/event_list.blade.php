@@ -111,21 +111,21 @@
                     <nav>
                         <ul>
                             <li>
-                                <a class="btn-link all active" href="{{ URL::to('/events?type=all') }}">All</a>
+                                <a class="btn-link all active"  href="{{ URL::to('/events?type=all') }}">All</a>
                             </li>
                             <li>
-                                <a class="btn-link trending" href="{{ URL::to('/events?type=trending') }}">Trending</a>
+                                <a class="btn-link trending"  href="{{ URL::to('/events?type=trending') }}">Trending</a>
                                 <ul style="position: absolute;right:10%;" >
                                     <li>
-                                        <a class="btn-link Nearest" href="{{ URL::to('/events?type=nearest') }}">Nearest</a>
+                                        <a class="Nearest" href="{{ URL::to('/events?type=nearest') }}">Nearest</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a class="btn-link upcoming" href="{{ URL::to('/events?type=upcoming') }}">Upcoming</a>
+                                <a class="btn-link upcoming"   href="{{ URL::to('/events?type=upcoming') }}">Upcoming</a>
                             </li>
                             <li>
-                                <a class="btn-link today" href="{{ URL::to('/events?type=today') }}">Today</a>
+                                <a class="btn-link today"  href="{{ URL::to('/events?type=today') }}">Today</a>
                             </li>
                         </ul>
 
@@ -197,10 +197,12 @@
 <script>
     var header = document.getElementById("event-filter");
     var btns = header.getElementsByClassName("btn-link");
-    for (var i = 0; i < btns.length; i++) {
+  
+    for (var i = 0; i <= btns.length; i++) {
         btns[i].addEventListener("click", function() {
             var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
+            console.log(current);
+            current[0].className = current[0].className.replace(" active"," ");
             this.className = " active";
             localStorage.ClassName = "active";
         });

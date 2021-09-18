@@ -590,7 +590,7 @@
                 <div class="listing-carousel fl-wrap upcoming-events-carousel">
                     @foreach($similarEvents as $event)
                     <!--slick-slide-item-->
-                    <div class="slick-slide-item" style=" height: 48rem;">
+                    <div class="slick-slide-item" style=" height: 52rem;">
                         <!-- listing-item -->
                         <div class="listing-item">
                             <article class="geodir-category-listing fl-wrap">
@@ -605,8 +605,8 @@
                                     <h3><a href="{{ URL::to('/event/details/'.$event->id) }}" >{{ Str::limit($event->event_name,20) }}</a></h3>
                                     <p>{{ Str::limit($event->venue_name,20) }} | {{ Str::limit($event->event_location,20) }}</p>
                                     <p><i class="fa fa-calendar-check-o"></i> <span>{{ $event->event_start_date }} | {{ $event->event_start_time }}</span></p>
-                                    {{-- <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}"> {{ Str::limit(App\Http\Controllers\FrontendController::getDistance($userLat,$userLon,$event->latitude,$event->longitude), 4)  }} KM Away</span></p>
-                                    <p id="long_{{ $event->id }}" style="display:none">{{ $event->longitude }}</p>
+                                    <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}"> {{ Str::limit(App\Http\Controllers\FrontendController::getDistance($userLat,$userLon,$event->latitude,$event->longitude), 4)  }} KM Away</span></p>
+                                   {{--  <p id="long_{{ $event->id }}" style="display:none">{{ $event->longitude }}</p>
                                     <p id="lat_{{ $event->id }}" style="display:none">{{ $event->latitude }}</p> --}}
                                     <div class="geodir-category-options fl-wrap">
                                         <div class="geodir-category-location"><a href="{{ URL::to('/event/details/'.$event->id) }}"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ Str::limit($event->address,20) }}</a></div>
@@ -694,7 +694,7 @@ function showError(error) {
 
 $('.upcoming-events-carousel').slick({
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         dots: true,
         arrows: false,
