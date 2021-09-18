@@ -155,7 +155,7 @@
                                 <div class="box-widget search-widget">
                                     <form action="/blogs/keyword" method="GET" class="fl-wrap">
                                         @csrf
-                                        <input name="search" id="se" type="text" class="search" placeholder="Search.." value="Search..." />
+                                        <input name="search" id="se" type="text" class="search" placeholder="Search.." value="" />
                                         <button class="search-submit" id="submit_btn"><i class="fa fa-search transition"></i> </button>
                                     </form>
                                 </div>

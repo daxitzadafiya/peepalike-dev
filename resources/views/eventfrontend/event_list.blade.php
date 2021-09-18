@@ -151,7 +151,7 @@
                             <h3><a href="{{ URL::to('/event/details/'.$event->id) }}">{{ $event->event_name }}</a></h3>
                             <p>{{ $event->venue_name }} | {{ $event->event_location }}</p>
                             <p><i class="fa fa-calendar-check-o"></i> <span>{{ $event->event_start_date }} | {{ $event->event_start_time }}</span></p>
-                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}">Calculate Distance to Venue</span></p>
+                            <p><i class="fa fa-location-arrow"></i> <span style="cursor:pointer" class="get_distance" id="{{ $event->id }}"> {{ Str::limit(App\Http\Controllers\FrontendController::getDistance($userLat,$userLon,$event->latitude,$event->longitude),4)  }} KM Away</span></p>
 
 
                             {{-- <p id="long_{{ $event->id }}" style="Display:none">{{ $event->longitude }}</p>
