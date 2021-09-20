@@ -95,7 +95,7 @@ class FrontendController extends Controller
         } elseif ($request->type == 'upcoming') {
             $events = UserEvents::where('event_start_date', '>', date('Y-m-d'))->paginate($perPage);
         } elseif ($request->type == 'all') {
-            $events = UserEvents::where('status', '=', '0')->orderBy('created_at')->paginate($perPage);
+            $events = UserEvents::where('status','0')->orderBy('created_at','desc')->paginate($perPage);
         } else if ($request->type == 'today') {
             $events = UserEvents::where('event_start_date', '=', date('Y-m-d'))->paginate($perPage);
         } elseif ($request->type == 'nearest') {
@@ -103,7 +103,7 @@ class FrontendController extends Controller
             $ip = $request->ip();
             // $currentUserInfo = Location::get($ip);
 
-            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('city',$city)->where('is_trending_event', 'yes')->paginate($perPage);
         } else {
             $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->paginate($perPage);
         }
