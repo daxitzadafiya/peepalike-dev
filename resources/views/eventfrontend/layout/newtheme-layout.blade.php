@@ -256,7 +256,7 @@
                                     <a class="{{ Request::is('/') ? 'act-link' : '' }}" href="{{url('/')}}">Home</a>
                                 </li>
                                 <li>
-                                    <a class="{{ Request::is('events') ? 'act-link' : '' }}" href="{{url('/events')}}">Events</a>
+                                    <a class="{{ Request::is('events') ? 'act-link' : '' }}" href="{{url('/events/all')}}">Events</a>
                                 </li>
                                 <li>
                                     <a class="{{ Request::is('about') ? 'act-link' : '' }}" href="{{url('/about')}}">About Us</a>

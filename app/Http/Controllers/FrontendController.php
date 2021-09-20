@@ -24,19 +24,19 @@ class FrontendController extends Controller
 {
     public static function getDistance($lat1, $lon1, $lat2, $lon2)
     {
-        $pi80 = M_PI / 180; 
-        $lat1 *= $pi80; 
-        $lon1 *= $pi80; 
-        $lat2 *= $pi80; 
-        $lon2 *= $pi80; 
-        $r = 6372.797; // mean radius of Earth in km 
-        $dlat = $lat2 - $lat1; 
-        $dlon = $lon2 - $lon1; 
-        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2)  *sin($dlon / 2) * sin($dlon / 2); 
-        $c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
-        $km = $r * $c; 
-        //echo ' '.$km; 
-        return $km; 
+        $pi80 = M_PI / 180;
+        $lat1 *= $pi80;
+        $lon1 *= $pi80;
+        $lat2 *= $pi80;
+        $lon2 *= $pi80;
+        $r = 6372.797; // mean radius of Earth in km
+        $dlat = $lat2 - $lat1;
+        $dlon = $lon2 - $lon1;
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2)  *sin($dlon / 2) * sin($dlon / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        $km = $r * $c;
+        //echo ' '.$km;
+        return $km;
     }
     public function index()
     {
@@ -72,13 +72,13 @@ class FrontendController extends Controller
         {
             //dd("gate1");
             $upcomingevents = UserEvents::where('event_start_date', '>', date('Y-m-d'))->orwhere('city',$city)->get();
-            if( count($upcomingevents) < 1) 
+            if( count($upcomingevents) < 1)
             {
                 $upcomingevents = UserEvents::where('event_start_date', '>', date('Y-m-d'))->get();
-            } 
+            }
         }
-        
-        
+
+
         // $address = DB::table('user_address')->get();
         //return view('frontend.index', get_defined_vars());
         return view('eventfrontend.index', get_defined_vars());
@@ -91,21 +91,21 @@ class FrontendController extends Controller
         $userLon = $arr_ip->lon;
         $perPage = 9;
         if ($request->type == 'trending') {
-            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('is_trending_event', 'yes')->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         } elseif ($request->type == 'upcoming') {
-            $events = UserEvents::where('event_start_date', '>', date('Y-m-d'))->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '>', date('Y-m-d'))->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         } elseif ($request->type == 'all') {
-            $events = UserEvents::where('status','0')->orderBy('created_at','desc')->paginate($perPage);
+            $events = UserEvents::where('status','0')->orderBy('event_start_date','desc')->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         } else if ($request->type == 'today') {
-            $events = UserEvents::where('event_start_date', '=', date('Y-m-d'))->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '=', date('Y-m-d'))->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         } elseif ($request->type == 'nearest') {
             // ********************************************************************* Nearest
             $ip = $request->ip();
             // $currentUserInfo = Location::get($ip);
 
-            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('city',$city)->where('is_trending_event', 'yes')->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->where('city',$city)->where('is_trending_event', 'yes')->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         } else {
-            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->paginate($perPage);
+            $events = UserEvents::where('event_start_date', '>=', date('Y-m-d'))->whereDate('event_start_date','>=',date('Y-m-d'))->paginate($perPage);
         }
         $totalPages = ceil(count(UserEvents::where('event_start_date', '>=', date('Y-m-d'))->get()) / $perPage);
         $category =  DB::table('event_categories')->get()->where('cstatus', 0);
@@ -432,7 +432,7 @@ class FrontendController extends Controller
 
     public function eventDetails(Request $request, $eventId)
     {
-       
+
         $arr_ip = geoip()->getLocation($_SERVER['REMOTE_ADDR']);
         $userLat = $arr_ip->lat;
         $userLon = $arr_ip->lon;
@@ -447,13 +447,13 @@ class FrontendController extends Controller
       //  dd($distance);
         //dd($event);
          $banners = EventBenner::where('event_id', $eventId)->get();
-         
+
          $category =  DB::table('event_categories')->where('cstatus', 0)->get();
         //$similarEvents = UserEvents::where('id','=',$eventId)->get();
-    
-        $similarEvents = UserEvents::where('ecid',$event->ecid)->inRandomOrder()->limit(5)->get(); 
 
-             //   $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();       
+        $similarEvents = UserEvents::where('ecid',$event->ecid)->inRandomOrder()->limit(5)->get();
+
+             //   $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();
                 $organizor = DB::table('users')->join('user_events','users.id','user_events.user_id')->where('user_events.id',$eventId)->get();
        //     dd($organizor);
       //  $organizor = UserEvents::with('getuserDetails')->where('user_id',$event->user_id)->get();

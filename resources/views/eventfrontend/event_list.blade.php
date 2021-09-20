@@ -111,26 +111,22 @@
                     <nav>
                         <ul>
                             <li>
-                              
-                               
-                                <a class="btn-link all @if(app('request')->input('type') == 'all') active @endif "  href="{{ URL::to('/events?type=all') }}">All</a>
+                                <a class="btn-link all {{ Request::is('events/all') ? 'active' : '' }}"  href="{{ URL::to('/events/all') }}">All</a>
                             </li>
                             <li>
-                                
-                                
-                                <a class="btn-link trending @if(app('request')->input('type') == 'trending') active @endif "  href="{{ URL::to('/events?type=trending') }}">Trending</a>
-                                
-                                <ul style="position: absolute;right:10%;" >
+                                <a class="btn-link trending {{ Request::is('events/trending') || Request::is('events/nearest') ? 'active' : '' }}"  href="{{ URL::to('/events/trending') }}">Trending</a>
+
+                                <ul style="position: absolute;right:10%;">
                                     <li>
-                                        <a class="Nearest" href="{{ URL::to('/events?type=nearest') }}">Nearest</a>
+                                        <a class="Nearest" href="{{ URL::to('/events/nearest') }}">Nearest</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a class="btn-link upcoming @if(app('request')->input('type') == 'upcoming') active @endif  "   href="{{ URL::to('/events?type=upcoming') }}">Upcoming</a>
+                                <a class="btn-link upcoming {{ Request::is('events/upcoming') ? 'active' : '' }}"   href="{{ URL::to('/events/upcoming') }}">Upcoming</a>
                             </li>
                             <li>
-                                <a class="btn-link today  @if(app('request')->input('type') == 'today') active @endif "  href="{{ URL::to('/events?type=today') }}">Today</a>
+                                <a class="btn-link today  {{ Request::is('events/today') ? 'active' : '' }}"  href="{{ URL::to('/events/today') }}">Today</a>
                             </li>
                         </ul>
 
@@ -202,8 +198,8 @@
 <script>
     var header = document.getElementById("event-filter");
     var btns = header.getElementsByClassName("btn-link");
-  
-    
+
+
     $(document).ready(function() {
         SetClass();
     });
@@ -216,7 +212,7 @@
     }
 
 
- 
+
    function getcityname(){
        let area = document.getElementById('area');
        area.innerText = $city;
